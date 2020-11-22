@@ -20,7 +20,7 @@
         <module>security</module>
         <module>junit</module>
         <module>proxy</module>
-        <module>ImmutableMap</module>
+        <module>immutable-map</module>
     </modules>
 
 </project>
