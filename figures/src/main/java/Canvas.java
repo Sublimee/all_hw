@@ -7,25 +7,25 @@ import java.util.Arrays;
 
 public class Canvas {
 
-    private static final char LINE_CHAR = '▰';
+    private static final String LINE_CHAR = " ▰ ";
 
-    private final char[][] cachedCanvasArray;
+    private final String[][] cachedCanvasArray;
     private final int width;
     private final int height;
 
     public Canvas(int w, int h) {
         width = w;
         height = h;
-        cachedCanvasArray = new char[this.height][this.width];
-        Arrays.stream(cachedCanvasArray).forEach(chars -> Arrays.fill(chars, '▱'));
+        cachedCanvasArray = new String[this.height][this.width];
+        Arrays.stream(cachedCanvasArray).forEach(strings -> Arrays.fill(strings, " ▱ "));
     }
 
     public void draw(DrawableFigure figure) {
-        for (Line line : figure.getLines()) {
+        for (Line line : figure.getSegments()) {
             Point point = line.getPoints().get(0);
             Point anotherPoint = line.getPoints().get(1);
             if (isPointOutsideCanvas(point.getX(), point.getY()) || isPointOutsideCanvas(anotherPoint.getX(), anotherPoint.getY())) {
-                throw new IllegalArgumentException("figure.Line is outside of canvas");
+                throw new IllegalArgumentException("Line is outside of canvas: " + point + ", " + anotherPoint);
             }
             int maxY = Math.max(point.getY(), anotherPoint.getY());
             int minY = Math.min(point.getY(), anotherPoint.getY());
@@ -53,4 +53,5 @@ public class Canvas {
     private boolean isPointOutsideCanvas(int x, int y) {
         return x < 0 || x >= width || y < 0 || y >= height;
     }
+
 }

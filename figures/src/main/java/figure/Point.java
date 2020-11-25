@@ -45,7 +45,7 @@ public class Point implements DrawableFigure {
     }
 
     @Override
-    public List<Line> getLines() {
+    public List<Line> getSegments() {
         Point point = new Point(x, y);
         return Collections.singletonList(new Line(Arrays.asList(point, point)));
     }
