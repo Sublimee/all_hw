@@ -10,15 +10,17 @@ import java.util.stream.Collectors;
 
 public class EchoHttpHandler implements HttpHandler {
 
+    public static final int OK_RESPONSE_CODE = 200;
+
     @Override
     public void handle(HttpExchange httpExchange) throws IOException {
         OutputStream outputStream = httpExchange.getResponseBody();
 
-        final String responseBody = new BufferedReader(
+        String responseBody = new BufferedReader(
                 new InputStreamReader(httpExchange.getRequestBody(), StandardCharsets.UTF_8))
                 .lines()
                 .collect(Collectors.joining("\n"));
-        httpExchange.sendResponseHeaders(200, responseBody.length());
+        httpExchange.sendResponseHeaders(OK_RESPONSE_CODE, responseBody.length());
 
         outputStream.write(responseBody.getBytes());
         outputStream.flush();
