@@ -7,7 +7,7 @@ public class EchoServer extends Thread {
 
     private final DatagramSocket socket;
     private boolean isRunning = false;
-    private byte[] buf = new byte[256];
+    private final byte[] buf = new byte[256];
 
     public EchoServer(final int port) throws SocketException {
         try {

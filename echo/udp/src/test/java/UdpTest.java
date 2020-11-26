@@ -15,14 +15,14 @@ public class UdpTest {
 
     @Before
     public void setup() throws SocketException, UnknownHostException {
-        final String hostName = "127.0.0.1";
-        final int port = 9999;
+        String hostName = "127.0.0.1";
+        int port = 9999;
         new EchoServer(port).start();
         client = new EchoClient(hostName, port);
     }
 
     @Test
-    public void whenCanSendAndReceivePacket_thenCorrect() throws IOException {
+    public void sendAndReceivePacketTest() throws IOException {
         String expected = "hello server";
         String echo = client.sendEcho(expected);
         assertEquals(expected, echo);

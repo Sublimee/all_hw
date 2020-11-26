@@ -14,17 +14,14 @@ public class EchoHttpHandler implements HttpHandler {
 
     @Override
     public void handle(HttpExchange httpExchange) throws IOException {
-        OutputStream outputStream = httpExchange.getResponseBody();
-
-        String responseBody = new BufferedReader(
-                new InputStreamReader(httpExchange.getRequestBody(), StandardCharsets.UTF_8))
-                .lines()
-                .collect(Collectors.joining("\n"));
-        httpExchange.sendResponseHeaders(OK_RESPONSE_CODE, responseBody.length());
-
-        outputStream.write(responseBody.getBytes());
-        outputStream.flush();
-        outputStream.close();
+        try (OutputStream outputStream = httpExchange.getResponseBody();
+             InputStreamReader is = new InputStreamReader(httpExchange.getRequestBody(), StandardCharsets.UTF_8)) {
+            BufferedReader br = new BufferedReader(is);
+            String responseBody = br.lines().collect(Collectors.joining("\n"));
+            httpExchange.sendResponseHeaders(OK_RESPONSE_CODE, responseBody.length());
+            outputStream.write(responseBody.getBytes());
+            outputStream.flush();
+        }
     }
 
 }

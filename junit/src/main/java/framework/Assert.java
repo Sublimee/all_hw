@@ -1,6 +1,6 @@
 package framework;
 
-public class Assert {
+public final class Assert {
 
     private Assert() {
     }

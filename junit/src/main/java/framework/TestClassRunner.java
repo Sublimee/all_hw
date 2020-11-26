@@ -32,20 +32,20 @@ public class TestClassRunner {
         }
 
         for (Method nextMethod : methods) {
-            Output.title(String.format("Execute test: %s", nextMethod.getName()));
+            ColoredOutput.title(String.format("Execute test: %s", nextMethod.getName()));
             try {
                 ReflectionUtil.callMethod(instance, nextMethod.getName());
-                Output.positive("passed");
+                ColoredOutput.positive("passed");
                 passed++;
-            } catch (Throwable e) {
-                Output.err(String.format("Failed test %s", nextMethod.getName()));
+            } catch (Exception e) {
+                ColoredOutput.err(String.format("Failed test %s", nextMethod.getName()));
                 e.printStackTrace(System.out);
                 failed++;
             }
-            Output.finishTest();
+            ColoredOutput.finishTest();
         }
 
-        Output.stat(passed, failed);
+        ColoredOutput.stat(passed, failed);
     }
 
     private List<Method> extractSuitableMethods() {

@@ -20,7 +20,7 @@ public class TcpTest {
     }
 
     @Test
-    public void whenCanSendAndReceivePacket_thenCorrect() throws IOException {
+    public void sendAndReceivePacketTest() throws IOException {
         String expectedResult = "hello server";
         String echo = client.send(expectedResult);
         assertEquals(expectedResult, echo);

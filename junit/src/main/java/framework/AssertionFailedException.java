@@ -1,6 +1,11 @@
 package framework;
 
+import java.io.Serial;
+
 public class AssertionFailedException extends AssertionError {
+
+    @Serial
+    private static final long serialVersionUID = -2013992150824157232L;
 
     public AssertionFailedException() {
     }

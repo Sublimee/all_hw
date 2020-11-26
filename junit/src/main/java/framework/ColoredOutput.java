@@ -1,6 +1,6 @@
 package framework;
 
-class Output {
+class ColoredOutput {
 
     private static final String ANSI_RESET = "\u001B[0m";
     private static final String GREEN_BOLD = "\033[1;32m";

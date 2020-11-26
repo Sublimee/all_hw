@@ -22,9 +22,8 @@ public class ProxyDemo {
             this.original = original;
         }
 
-        public Object invoke(Object proxy, Method method, Object[] args)
-                throws IllegalAccessException, IllegalArgumentException,
-                InvocationTargetException {
+        public Object invoke(Object proxy, Method method, Object... args)
+                throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
             System.out.println("BEFORE");
             method.invoke(original, args);
             System.out.println("AFTER");
@@ -35,7 +34,7 @@ public class ProxyDemo {
     public static void main(String[] args) {
         Original original = new Original();
         Handler handler = new Handler(original);
-        If f = (If) Proxy.newProxyInstance(If.class.getClassLoader(),
+        If f = (If) Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(),
                 new Class[]{If.class},
                 handler);
         f.originalMethod("Hallo");

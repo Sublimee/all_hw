@@ -5,7 +5,7 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 
 
-public class ReflectionUtil {
+public final class ReflectionUtil {
 
     private ReflectionUtil() {
     }
@@ -38,7 +38,7 @@ public class ReflectionUtil {
         }
     }
 
-    public static Class<?>[] getClasses(Object[] args) {
+    public static Class<?>[] getClasses(Object... args) {
         return Arrays.stream(args).map(Object::getClass).toArray(Class<?>[]::new);
     }
 

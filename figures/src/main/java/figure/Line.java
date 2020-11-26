@@ -10,16 +10,12 @@ public class Line implements DrawableFigure {
     protected List<Point> points;
 
     public Line(List<Point> points) {
-        setPoints(points);
+        validatePoints(points);
+        this.points = points;
     }
 
     public List<Point> getPoints() {
         return points;
-    }
-
-    public void setPoints(List<Point> points) {
-        validatePoints(points);
-        this.points = points;
     }
 
     @Override
@@ -50,7 +46,7 @@ public class Line implements DrawableFigure {
                 throw new IllegalArgumentException("Список точек содержит null-значения");
             }
             if (point.equals(previousPoint)) {
-                throw new IllegalArgumentException("Список содержит одинаковые подряд идущие значения");
+                throw new IllegalArgumentException("Список точек содержит одинаковые подряд идущие значения");
             }
             if (isDiagonal(point, previousPoint)) {
                 throw new IllegalArgumentException("Линия не может идти по диагонали");

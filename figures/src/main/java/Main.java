@@ -9,7 +9,7 @@ public class Main {
 
     private static Canvas canvas;
 
-    public static void main(String[] args) throws NumberFormatException {
+    public static void main(String[] args) {
         createNewCanvas();
         draw();
     }

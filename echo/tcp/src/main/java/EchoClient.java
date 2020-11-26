@@ -26,15 +26,13 @@ public class EchoClient {
     }
 
     public String send(final String msg) throws IOException {
-        String result;
         try {
             out.println(msg);
-            result = in.readLine();
+            return in.readLine();
         } catch (IOException e) {
             System.err.println("I/O error with " + socket.getLocalAddress());
             throw e;
         }
-        return result;
     }
 
     public void close() throws IOException {

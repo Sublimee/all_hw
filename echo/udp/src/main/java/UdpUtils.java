@@ -1,4 +1,4 @@
-public class UdpUtils {
+public final class UdpUtils {
 
     public static final String TERMINAL_SEQUENCE = "end";
 
