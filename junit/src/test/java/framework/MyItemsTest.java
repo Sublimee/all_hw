@@ -1,4 +1,5 @@
-import framework.Assert;
+package framework;
+
 import framework.annotations.Test;
 
 public class MyItemsTest {
